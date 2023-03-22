@@ -1,7 +1,10 @@
+#!/usr/bin/python3
+
 """Valkyria bot client"""
 import logging
 import discord
 from discord.ext import commands
+import os
 import random
 
 intents = discord.Intents.default()
