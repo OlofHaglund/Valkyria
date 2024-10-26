@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: valkyria
+  labels:
+    app: valkyria
+spec:
+  replicas: 1
+  strategy:
+    # Becuase of uncertainties around whether two instances can run at the same time, we use Recreate
+    type: Recreate
+  selector:
+    matchLabels:
+      app: valkyria
+  template:
+    metadata:
+      labels:
+        app: valkyria
+    spec:
+      containers:
+      - name: valkyria
+        image: ghcr.io/olofhaglund/valkyria:v0.0.2
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        env:
+        - name: VALKYRIA_BOT_KEY
+          valueFrom:
+            secretKeyRef:
+              name: valkyria-bot-key
+              key: token
