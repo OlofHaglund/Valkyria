@@ -22,6 +22,6 @@ async def hello(ctx):
 
 @bot.command()
 async def cafe(ctx):
-    await ctx.send("True random: " + random.choice(["EH", "Waynes", "3G"]))
+    await ctx.send("True random: " + random.choice(["EH", "Waynes", "3G", "Cafe Nyfiket"]))
 
 bot.run(os.environ.get("VALKYRIA_BOT_KEY"))
